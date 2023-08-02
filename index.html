@@ -7,17 +7,35 @@
      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" 
      crossorigin="anonymous" />-->
     <link rel="stylesheet" href="style.css" />
-    <title>Drawing App</title>
+    <title>Content Placeholder</title>
 </head>
 <body>
-    <canvas id="canvas" width="600" height="400"></canvas>
-    <div class="toolbox">
-        <button id="decrease">-</button>
-        <span id="size">20</span>
-        <button id="increase">+</button>
-        <input type="color" id="color">
-        <button id="clear">X</button>
+    <div class="card">
+        <div class="card-header animated-bg" id="header">
+            &nbsp;
+        </div>
+        <div class="card-content">
+            <h3 class="card-title animated-bg animated-bg-text" id="title">
+                &nbsp;
+            </h3>
+            <p class="card-excerpt" id="excerpt">
+                &nbsp;
+                <span class="animated-bg animated-bg-text">&nbsp;</span>
+                <span class="animated-bg animated-bg-text">&nbsp;</span>
+                <span class="animated-bg animated-bg-text">&nbsp;</span>
+            </p>
+            <div class="author">
+                <div class="profile-img animated-bg" id="profile-img">
+                    &nbsp;
+                </div>
+                <div class="author-info">
+                    <strong class="animated-bg animated-bg-text" id="name">&nbsp;</strong>
+                    <small class="animated-bg animated-bg-text" id="date">&nbsp;</small>
+                </div>
+            </div>
+        </div>
     </div>
+
 
     <script src="script.js"></script>
 </body>

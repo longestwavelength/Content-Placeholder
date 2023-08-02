@@ -1,87 +1,23 @@
-const canvas = document.getElementById('canvas'); //Canvas API
-const increaseBtn = document.getElementById('increase')
-const decreaseBtn = document.getElementById('decrease')
-const sizeElem = document.getElementById('size')
-const colorBoard = document.getElementById('color')
-const clearElem = document.getElementById('clear')
-const ctx = canvas.getContext('2d');
+const header = document.getElementById('header')
+const title = document.getElementById('title')
+const excerpt = document.getElementById('excerpt')
+const profile_img = document.getElementById('profile-img')
+const name = document.getElementById('name')
+const date = document.getElementById('date')
 
-let size = 20
-let isPressed = false
-let color = "black"
-let x 
-let y
+const animated_bgs = document.querySelectorAll('.animated-bg') 
+const animated_bg_texts = document.querySelectorAll('.animated-bg-text')
 
-canvas.addEventListener('mousedown', (e) => {
-    isPressed = true
+setTimeout(getData, 2500)
 
-    x = e.offsetX
-    y = e.offsetY
-})
+function getData() {
+    header.innerHTML = '<img src="https://cdn.thewirecutter.com/wp-content/media/2023/06/laptops-2048px-5607.jpg?auto=webp&quality=75&crop=1.91:1&width=1200" alt="">'
+    title.innerHTML = 'Lorem ipsum dolor sit amet'
+    excerpt.innerHTML = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, quidem'
+    profile_img.innerHTML = '<img src="https://randomuser.me/api/portraits/men/45.jpg" alt="">'
+    name.innerHTML = 'Chris Strong'
+    date.innerHTML = 'July 31, 2023'
 
-canvas.addEventListener('mouseup', (e) => {
-    isPressed = false
-
-    x = undefined
-    y = undefined
-})
-
-canvas.addEventListener('mousemove', (e) => {
-    if(isPressed){
-        const x2 = e.offsetX
-        const y2 = e.offsetY
-
-        drawCircle(x2, y2)
-        drawLine(x, y, x2, y2)
-
-        x = x2
-        y = y2
-    }
-    
-})
-
-function updateSizeOnScreen() {
-    sizeElem.innerText = size
+    animated_bgs.forEach(bg => bg.classList.remove('animated-bg'))
+    animated_bgs_texts.forEach(bg => bg.classList.remove('animated-bg-text'))
 }
-
-function drawCircle(x, y) {
-    ctx.beginPath();
-    ctx.arc(x, y, size, 0, Math.PI*2, true)
-    ctx.fillStyle = color
-    ctx.fill()
-}
-
-function drawLine(x1, y1, x2, y2) {
-    ctx.beginPath();
-    ctx.moveTo(x1, y1)
-    ctx.lineTo(x2, y2)
-    ctx.strokeStyle = color
-    ctx.lineWidth = size * 2
-    ctx.stroke()
-}
-
-increaseBtn.addEventListener('click', (e) => {
-    size += 2
-    if(size > 50){
-        size = 50
-    }
-
-    updateSizeOnScreen()
-})
-
-decreaseBtn.addEventListener('click', (e) => {
-    size -= 2
-    if(size < 2){
-        size = 2
-    }
-
-    updateSizeOnScreen()
-})
-
-colorBoard.addEventListener('change', (e) =>
-    color = e.target.value
-)
-
-clearElem.addEventListener('click', () => ctx.clearRect(0, 0, canvas.width, canvas.height))
-
-
